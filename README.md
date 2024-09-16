@@ -7,7 +7,7 @@ TSV Batch Export relies on [essential properties](https://helpx.adobe.com/after-
 ## How to use it?
 After the script will launch it will prompt for two inputs. First prompt tells user to select .tsv-file containing the data. Second prompt tells user to select folder where all files will be exported. 
 
-## Properties
+## Arguments
 TSV Batch Export supports three arguments (*filename*, *comp* and *render*) that must not be used as a name for any essential property. All arguments are optional.
 
 - **comp** (string) may be used to select which composition in the project will be exported by the script. By default the script uses currently selected composition.
