@@ -1,3 +1,10 @@
+/**
+* Script: TSV Batch Export
+* Description: Simple utility script for Adobe After Effects to populate and export compositions with spreadsheet data.
+* Author: Kristian Broholm
+* License: GNU GPL-3.0
+*/ 
+
 (function(){
     var renderQueue = app.project.renderQueue;
     var projectItems = app.project.items;
