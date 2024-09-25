@@ -6,12 +6,22 @@
 */ 
 
 (function(){
+
+    Array.prototype.includes = function(obj) {
+    var i = this.length;
+        while (i--) {
+            if (this[i] === obj) { return true; }
+        }
+        return false;
+    }
+
     var renderQueue = app.project.renderQueue;
     var projectItems = app.project.items;
     var selectedItem = app.project.activeItem;
     var comp;
 
     var file = File.openDialog("Please select TSV file to process");
+    if (!file) return alert('TSV Batch Export was cancelled by user.');
 
     var tsvData = [];
 
@@ -24,6 +34,8 @@
     if (tsvData.length === 0) return alert("Selected file is empty!")
 
     var outputFolder = Folder.selectDialog("Please select folder for output");
+
+    if (!outputFolder) return alert('TSV Batch Export was cancelled by user.');
 
     var data = []
     var properties = tsvData[0].split("\t");
@@ -52,10 +64,13 @@
                     comp = currentItem;
                     break;
                 }
-                comp = selectedItem;
-                if (comp.typeName !== "Composition") return alert('No Comp was found!');
             }
+            if (!comp) return alert('Composition ' + entry['comp'] + ' was not found!');
+        } else {
+            comp = selectedItem;
         }
+
+        if (comp.typeName !== "Composition") return alert('Please select a composition!');
 
         var essentialProperties = comp.layer(1).property("Essential Properties");
        
@@ -68,8 +83,12 @@
 
         var renderQueueItem = renderQueue.items.add(comp);
         var filename = entry['filename'] ? entry['filename'] : comp.name + '_' + (i+1);
-        
-        renderQueueItem.outputModule(1).applyTemplate('Lossless with Alpha');
+        var preset = entry['preset'] ? entry['preset'] : 'Lossless with Alpha';
+        var templates = renderQueueItem.outputModule(1).templates;
+        var templateExists = templates.includes(preset);
+        if (!templateExists) return alert('Template ' + preset + ' doesn\'t exist!');
+
+        renderQueueItem.outputModule(1).applyTemplate(preset);
         renderQueueItem.outputModule(1).file = File(outputFolder.absoluteURI + '/' + filename);
         renderQueue.render();
     }
