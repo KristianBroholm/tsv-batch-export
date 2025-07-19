@@ -16,6 +16,6 @@ TSV Batch Export supports three arguments (*filename*, *comp* and *render*) that
 
 - **render** (bool) may be used in more advanced workflows to select specific rows of the spreadsheet to be processed. If **render** is set to **FALSE**, the script will bypass the row. If **render** is set to **TRUE** the row will be processed as usual.
 
-## Upcoming featuers
+## Upcoming features
 
 - Ability to select different output modules
