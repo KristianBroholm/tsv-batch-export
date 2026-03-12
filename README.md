@@ -1,5 +1,4 @@
-# TSV Batch Export for Adobe Creative Cloud
-
+# TSV Batch Export for Premiere Pro and After Effects
 A utility suite for Adobe After Effects and Premiere Pro to automate the population of templates using spreadsheet data (TSV). These scripts are ideal for versioning projects where you need to generate multiple variations of a composition or MOGRT with different text, colors, or other properties.
 
 ## Features
