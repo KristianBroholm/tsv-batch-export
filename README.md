@@ -63,6 +63,9 @@ The first row (header) must match the names of your **Essential Properties** (AE
 | **render** | Boolean | Set to `FALSE` to skip a specific row. | AE & PrPro |
 | **preset** | String | (Optional) AE Output Module template (e.g., "Lossless"). | AE |
 
+> [!NOTE]
+> Reserved arguments (listed above) should not be used for Essential Properties or MOGRT Parameters.
+
 ### Example TSV Data
 
 ```tsv
